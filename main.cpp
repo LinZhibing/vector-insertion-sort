@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 {
     random_generator rg;
     timer t;
-    int n, m, d, a;
+    int n, m, d;
 
     if (argc > 1)
     {
@@ -40,14 +40,8 @@ int main(int argc, char* argv[])
     }
     else
         n = 0;
-
     if (argc > 3)
-        a = atoi(argv[3]);
-    else
-        a = 0;
-
-    if (argc > 4)
-        d = atoi(argv[4]);
+        d = atoi(argv[3]);
     else
         d = 0;
 
@@ -86,34 +80,10 @@ int main(int argc, char* argv[])
 // }
 // cout << endl;
 
-/*
- * Do a merge sort or an insertion sort
- */
-    switch (a) {
-        case 0: {
-            cout << "Running insertion sort algorithm: " << endl;
-            t.start();
-            insertion_sort(input_array, n, 0, m-1);
-            t.stop();
-        } break;
-        case 1: {
-            cout << "Running merge sort algorithm: " << endl;
-            t.start();
-            merge_sort(input_array, n, 0, m-1);
-            t.stop();
-
-        } break;
-        default: {
-            if (a < 0)
-            {
-                cout << "Running improved insertion sort algorithm: " << endl;
-                t.start();
-                insertion_sort_im(input_array, n, 0, m-1);
-                t.stop();
-            }
-        } break;
-    }
-
+    cout << "Running insertion sort algorithm: " << endl;
+    t.start();
+    insertion_sort(input_array, n, 0, m-1);
+    t.stop();
     cout << "Timer (sort): " << t << endl;
 
 /*
