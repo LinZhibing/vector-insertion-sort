@@ -83,73 +83,7 @@ void insertion_sort_im(int** A, int n, int l, int r)
 }
 
 
-/*
-*   TO IMPLEMENT: Improved Merge Sort for problem 2.
-*/
-void merge(int** A, int** L, int** R, int sizeL, int sizeR, int n)
-{
-    int i = 0, j = 0, m = 0;
-    while(i < sizeL && j < sizeR){
-        if(ivector_length(L[i], n) < ivector_length(R[j], n)){
-            A[m] = L[i];
-            m++;
-            i++;
-        } else{
-            A[m] = R[j];
-            m++;
-            j++;
-        }
-    }
 
-    while(i < sizeL){
-        A[m] = L[i];
-        m++;
-        i++;
-    }
-    while(j < sizeR){
-        A[m] = R[j];
-        m++;
-        j++;
-    }
-
-}
-void merge_sort(int** A, int n, int l, int r)
-{
-    if(r - l + 1 < 2) return;
-
-    int sizeL, sizeR;
-
-
-    if ((r - l + 1) % 2 == 0){
-        sizeL = (r - l + 1) / 2;
-        sizeR = (r - l + 1) / 2;
-
-    }
-    else {
-        sizeL = (r - l + 1) / 2 + 1;
-        sizeR = (r - l + 1) / 2;
-    }
-    int** L = create_ivector(n, sizeL);
-    int** R = create_ivector(n, sizeR);
-
-    for (int i = 0; i < sizeL; i++){
-        L[i] = A[i];
-    }
-
-    for (int i = sizeL; i <= r; i++){
-        R[i - sizeL] = A[i];
-    }
-    int a = sizeL, b = sizeR;
-
-    merge_sort(L, n, 0, sizeL - 1);
-    merge_sort(R, n, 0, sizeR - 1);
-    merge(A, L, R, sizeL, sizeR, n);
-//    remove_ivector(L, a);
-//    remove_ivector(R, b);
-
-
-
-}
 
 /*
  * Simple function to check that our sorting algorithm did work
